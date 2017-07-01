@@ -29,6 +29,8 @@ const replyMessage = (message) => {
     */
     if(result.action.slug == 'order-product'){
       console.log('ordering');
+      console.log(result.intents);
+      console.log(result.entities);
     }
 
 
