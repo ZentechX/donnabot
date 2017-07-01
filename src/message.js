@@ -23,8 +23,8 @@ const replyMessage = (message) => {
     /*
     * YOUR OWN CODE*/
 
-    if (res.intent()) { console.log('Intent: ', res.intent().slug) }
-        if (res.intent().slug === 'order-product') {
+    if (result.intent()) { console.log('Intent: ', result.intent().slug) }
+        if (result.intent().slug === 'order-product') {
           console.log('ordering');
         }
 
