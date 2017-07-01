@@ -28,8 +28,8 @@ const replyMessage = (message) => {
     * etc...
     */
     if(result.action.slug == 'order-product'){
-      console.log(result.entities.number.scalar);
-      console.log(result.entities.order_product.value);
+      console.log(result.entities.number);
+      console.log(result.entities.order_product);
     }
 
 
