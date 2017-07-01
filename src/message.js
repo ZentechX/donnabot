@@ -4,6 +4,9 @@
  */
 
 const recastai = require('recastai')
+const GoogleSpreadsheet = require('google-spreadsheet');
+const creds = require('../client_secret.json');
+const doc = new GoogleSpreadsheet('1HW2nWhGTBHZF7n4Yk1zMavPk9-hCBXDn9mfyFleozsY');
 
 // This function is the core of the bot behaviour
 const replyMessage = (message) => {
@@ -28,8 +31,18 @@ const replyMessage = (message) => {
     * etc...
     */
     if(result.action.slug == 'order-product'){
-      console.log(result.entities.number[0].scalar);
-      console.log(result.entities.order_product[0].value);
+      const amount = result.entities.number[0].scalar;
+      const product = result.entities.order_product[0].value;
+
+      doc.useServiceAccountAuth(creds, function (err) {
+
+        doc.addRow(1, { name: 'zenno', order_product: product, amount : amount }, function(err) {
+        if(err) {
+          console.log(err);
+        }
+      });
+    });
+
     }
 
 
