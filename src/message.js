@@ -21,8 +21,15 @@ const replyMessage = (message) => {
   request.converseText(text, { conversationToken: senderId })
   .then(result => {
     /*
-    * YOUR OWN CODE*/
-
+    * YOUR OWN CODE
+    * Here, you can add your own process.
+    * Ex: You can call any external API
+    * Or: Update your mongo DB
+    * etc...
+    */
+    if(result.action.slug == 'order-product'){
+      console.log('ordering');
+    }
 
 
     if (result.action) {
