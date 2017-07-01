@@ -23,10 +23,14 @@ const replyMessage = (message) => {
     /*
     * YOUR OWN CODE*/
 
-    // if (result.intent()) { console.log('Intent: ', result.intent().slug) }
-    //     if (result.intent().slug === 'order-product') {
-    //       console.log('ordering');
-    //     }
+    if (result.action && result.action.slug === 'order-product' && result.action.done) {
+
+    .then(res => {
+
+      message.addReply({ type: 'text', content: 'Do you want more informations?'})
+    
+    })
+}
 
     if (result.action) {
       console.log('The conversation action is: ', result.action.slug)
