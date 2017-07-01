@@ -14,19 +14,20 @@ const replyMessage = (message) => {
 
   console.log('I receive: ', text)
 
-  // Get senderId to catch unique conversation_token
+  // Get sendesrId to catch unique conversation_token
   const senderId = message.senderId
 
   // Call Recast.AI SDK, through /converse route
   request.converseText(text, { conversationToken: senderId })
   .then(result => {
     /*
-    * YOUR OWN CODE
-    * Here, you can add your own process.
-    * Ex: You can call any external API
-    * Or: Update your mongo DB
-    * etc...
-    */
+    * YOUR OWN CODE*/
+
+    if (res.intent()) { console.log('Intent: ', res.intent().slug) }
+        if (res.intent().slug === 'order-product') {
+          console.log('ordering');
+        }
+
     if (result.action) {
       console.log('The conversation action is: ', result.action.slug)
     }
